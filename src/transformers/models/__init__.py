@@ -283,6 +283,7 @@ from . import (
     wavlm,
     whisper,
     x_clip,
+    xalma,
     xglm,
     xlm,
     xlm_roberta,
