@@ -18,7 +18,7 @@ rendered properly in your Markdown viewer.
 
 ## Overview
 
-The ColPali model was proposed in [ColPali: Efficient Document Retrieval with Vision Language Models](https://doi.org/10.48550/arXiv.2407.01449) by **Manuel Faysse***, **Hugues Sibille***, **Tony Wu***, Bilel Omrani, Gautier Viaud, Céline Hudelot, Pierre Colombo (* denotes equal contribution).
+The ColPali model was proposed in [ColPali: Efficient Document Retrieval with Vision Language Models](https://doi.org/10.48550/arXiv.2407.01449) by **Manuel Faysse***, **Hugues Sibille***, **Tony Wu***, Bilel Omrani, Gautier Viaud, Céline Hudelot, Pierre Colombo (* denotes equal contribution). Work lead by ILLUIN Technology.
 
 With our new model *ColPali*, we propose to leverage VLMs to construct efficient multi-vector embeddings in the visual space for document retrieval. By feeding the ViT output patches from PaliGemma-3B to a linear projection, we create a multi-vector representation of documents. We train the model to maximize the similarity between these document embeddings and the query embeddings, following the ColBERT method.
 
@@ -74,8 +74,8 @@ batch_queries = processor(text=queries).to(model.device)
 
 # Forward pass
 with torch.no_grad():
-    image_embeddings = model(**batch_images)
-    query_embeddings = model(**batch_queries)
+    image_embeddings = model(**batch_images).embeddings
+    query_embeddings = model(**batch_queries).embeddings
 
 # Score the queries against the images
 scores = processor.score_retrieval(query_embeddings, image_embeddings)
